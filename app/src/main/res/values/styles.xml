@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="datePickerTheme" parent="android:Theme.Material.Light.Dialog">
+        <item name="android:colorAccent"> #0E9754</item>
+        <item name="android:colorBackground">#E447FF99</item>
+        <item name="android:colorButtonNormal">#0E9754</item>
+    </style>
+
+</resources>

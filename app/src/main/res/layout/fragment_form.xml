@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg_mb2"
+    tools:context="ui.SolicitateForm.FormFragment">
+
+    <ScrollView
+        android:id="@+id/scvInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lytInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etFirstName"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_border"
+                android:hint="Primer Nombre"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etSecondName"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:hint="Segundo Nombre"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etFirstName" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etFirstSurname"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:hint="Primer Apellido"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etSecondName" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etSecondSurname"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:hint="Segundo Apellido"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etFirstSurname" />
+
+            <Spinner
+                android:id="@+id/spTypeDoc"
+                style="@style/CustomSpinnerStyle"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etSecondSurname" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etNumDoc"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:hint="N° de Documento"
+                android:inputType="number"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:singleLine="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spTypeDoc" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etLugardeExpedicion"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:hint="Lugar de Expedición"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etNumDoc" />
+
+            <Spinner
+                android:id="@+id/spSexo"
+                style="@style/CustomSpinnerStyle"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etLugardeExpedicion" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etTelFijo"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:hint="Teléfono Fijo"
+                android:inputType="phone"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spSexo" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etCelular"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:hint="Celular"
+                android:inputType="phone"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etTelFijo" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etAddress"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:hint="Dirección"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etCelular" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etEmail"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etAddress" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etCargo"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:hint="Cargo o N° Contrato"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etEmail" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etSupervisorId"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:hint="Supervisor id"
+                android:inputType="number"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etCargo" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etDependencia"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:hint="Dependencia"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etSupervisorId" />
+
+            <Spinner
+                android:id="@+id/spSede"
+                style="@style/CustomSpinnerStyle"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etDependencia" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etUbiLaboral"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:hint="Ubicación Laboral"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spSede" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etProCard"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:hint="Tarjeta Profesional"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etUbiLaboral" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etDateContrato"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:clickable="false"
+                android:focusable="false"
+                android:hint="@string/fecha_final_de_contrato"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etProCard" />
+
+            <CheckBox
+                android:id="@+id/checkTermsConf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:text="Acuerdo de Confidencialidad"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lytCredentialAssignation" />
+
+            <CheckBox
+                android:id="@+id/checkDataTreatment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:text="Tratamiento de Datos Personales"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkTermsConf" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnEnviarSolicitud"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="100dp"
+                android:background="@drawable/rounded_button"
+                android:text="Enviar Solicitud"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkDataTreatment" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/lytSystemRequired"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etDateContrato">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etSolType"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/rounded_border"
+                    android:hint="Tipo de Solicitud"
+                    android:maxLines="1"
+                    android:minHeight="48dp"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Spinner
+                    android:id="@+id/spAplicativo"
+                    style="@style/CustomSpinnerStyle"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/rounded_border"
+                    android:minHeight="48dp"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etSolType" />
+
+                <Spinner
+                    android:id="@+id/spModulo"
+                    style="@style/CustomSpinnerStyle"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/rounded_border"
+                    android:minHeight="48dp"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/spAplicativo" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etObsrvUser"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/rounded_border"
+                    android:hint="Observaciones"
+                    android:inputType="textMultiLine"
+                    android:maxHeight="120dp"
+                    android:minHeight="120dp"
+                    android:padding="10dp"
+                    android:scrollbars="vertical"
+                    android:singleLine="false"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/spModulo" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etObsrvSuper"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/rounded_border"
+                    android:hint="Observaciones del Supervisor"
+                    android:inputType="textMultiLine"
+                    android:maxHeight="120dp"
+                    android:minHeight="120dp"
+                    android:padding="10dp"
+                    android:scrollbars="vertical"
+                    android:singleLine="false"
+                    android:textSize="18sp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etObsrvUser" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/lytCredentialAssignation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lytSystemRequired">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etAssignUser"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_border"
+                    android:hint="Usuario"
+                    android:maxLines="1"
+                    android:minHeight="48dp"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etAssignPassword"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/rounded_border"
+                    android:hint="Contraseña"
+                    android:maxLines="1"
+                    android:minHeight="48dp"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etAssignUser" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etObsrvAdmin"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/rounded_border"
+                    android:hint="Observaciones del Administrador"
+                    android:inputType="textMultiLine"
+                    android:maxHeight="120dp"
+                    android:minHeight="120dp"
+                    android:padding="10dp"
+                    android:scrollbars="vertical"
+                    android:singleLine="false"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etAssignPassword" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnDeny"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/rounded_button"
+                    android:text="Rechazar"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toStartOf="@+id/btnApprove"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etObsrvAdmin" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnApprove"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/rounded_button"
+                    android:text="Aprobar"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btnDeny"
+                    app:layout_constraintTop_toBottomOf="@id/etObsrvAdmin" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnClose"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/rounded_button"
+                    android:text="Cerrar"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnApprove" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">VistaTest</string>
+    <string name="usuario">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="iniciar_sesion">INICIAR SESIÓN</string>
+    <string name="title_activity_nav_drawer">NavDrawerActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Nombre de Usuario</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Menú Principal</string>
+    <string name="menu_gallery">Gestión de Identidades</string>
+    <string name="menu_logout">Cerrar Sesión</string>
+    <string name="cerrar_sesi_n">Cerrar Sesión</string>
+    <string name="solicitar_aplicativo">Solicitar Aplicativo</string>
+    <string name="generar_paz_y_salvo">Generar Paz y Salvo</string>
+    <string name="btnRegister">Solicitar Usuario al Sistema de Administración de Recursos y Aplicaciones</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="solicitar">"Solicitar"</string>
+    <string name="cargo">"  Cargo"</string>
+    <string name="email">"  Email"</string>
+    <string name="primer_nombre">"  Primer Nombre"</string>
+    <string name="primer_apellido">"  Primer Apellido"</string>
+    <string name="segundo_nombre">"  Segundo Nombre"</string>
+    <string name="n_de_documento">"  N° de Documento"</string>
+    <string name="segundo_apellido">"  Segundo Apellido"</string>
+    <string name="fecha_final_de_contrato">Fecha final de Contrato</string>
+</resources>

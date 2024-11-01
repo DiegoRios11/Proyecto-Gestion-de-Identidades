@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="typeOfDocuments">
+        <item>Tipo de Documento</item>
+        <item>Tarjeta de Identidad</item>
+        <item>Cédula de Ciudadanía</item>
+        <item>Cédula de Extranjería</item>
+    </string-array>
+
+    <string-array name="Supervisor">
+        <item>Seleccione Supervisor</item>
+        <item>Supervisor 1</item>
+        <item>Supervisor 2</item>
+        <item>Supervisor 3</item>
+    </string-array>
+    <string-array name="Genero">
+        <item>Seleccione Género</item>
+        <item>Masculino</item>
+        <item>Femenino</item>
+        <item>No Binario</item>
+    </string-array>
+    <string-array name="Sede">
+        <item>Seleccione Sede</item>
+        <item>Administrativa</item>
+    </string-array>
+    <string-array name="Aplicativo">
+        <item>Seleccione Aplicativo</item>
+        <item>Aplicativo 1</item>
+        <item>Aplicativo 2</item>
+        <item>Aplicativo 3</item>
+
+    </string-array>
+    <string-array name="Modulo">
+        <item>Seleccione Módulo</item>
+        <item>Módulo 1</item>
+        <item>Módulo 2</item>
+        <item>Módulo 3</item>
+
+    </string-array>
+</resources>

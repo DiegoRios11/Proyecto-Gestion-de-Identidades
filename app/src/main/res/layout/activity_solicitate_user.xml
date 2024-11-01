@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg_mb2"
+    tools:context=".SolicitateUser">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLogin"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_button"
+                android:text="@string/login"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextSizeCheck">
+
+            </androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etFirstName"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:hint="@string/primer_nombre"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnLogin" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etSecondName"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:hint="@string/segundo_nombre"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etFirstName" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etFirstSurname"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:hint="@string/primer_apellido"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etSecondName" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etSecondSurname"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:hint="@string/segundo_apellido"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etFirstSurname" />
+
+            <Spinner
+                android:id="@+id/spTypeDoc"
+                android:layout_width="300dp"
+                android:layout_height="48dp"
+                style="@style/CustomSpinnerStyle"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etSecondSurname" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etNumDoc"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:hint="@string/n_de_documento"
+                android:inputType="number"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:singleLine="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spTypeDoc" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etEmail"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:hint="@string/email"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:singleLine="true"
+                android:textColorHint="#2E7D32"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etNumDoc" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etCargo"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                android:hint="@string/cargo"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etEmail" />
+
+            <Spinner
+                android:id="@+id/spSupervisor"
+                android:layout_width="300dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_border"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etCargo"
+                app:layout_constraintWidth_min="150dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSolicitate"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="100dp"
+                android:background="@drawable/rounded_button"
+                android:text="@string/solicitar"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spSupervisor"
+                tools:ignore="TextSizeCheck" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
