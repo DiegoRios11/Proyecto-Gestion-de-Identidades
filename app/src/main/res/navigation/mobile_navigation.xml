@@ -27,5 +27,10 @@
         android:name="com.diegorios.vistatest.ui.SolicitateForm.FormFragment"
         android:label="Solicitar Aplicativo"
         tools:layout="@layout/fragment_form" />
+    <fragment
+        android:id="@+id/nav_VerSolicitudes"
+        android:name="com.diegorios.vistatest.ui.Solicitudes.SolicitudesFragment"
+        android:label="Ver Solicitudes"
+        tools:layout="@layout/fragment_view_solicitudes" />
 
 </navigation>
