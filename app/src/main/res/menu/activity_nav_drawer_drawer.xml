@@ -19,17 +19,18 @@
             android:id="@+id/nav_gallery"
             android:icon="@drawable/identity"
             android:iconTint="@color/white"
-
-            android:title="@string/menu_gallery">
+            android:title="@string/GestiondeIdentidades">
             <menu>
 
                 <item
                     android:id="@+id/nav_SolicitarAplicativo"
-                    android:title="@string/solicitar_aplicativo"
-                    />
+                    android:title="@string/solicitar_aplicativo" />
                 <item
                     android:id="@+id/nav_VerSolicitudes"
                     android:title="@string/ver_solicitudes" />
+                <item
+                    android:id="@+id/nav_PazySalvo"
+                    android:title="@string/paz_y_salvo" />
             </menu>
 
         </item>

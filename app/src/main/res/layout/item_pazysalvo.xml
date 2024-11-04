@@ -31,42 +31,31 @@
             app:layout_constraintTop_toBottomOf="@+id/tvId" />
 
         <TextView
-            android:id="@+id/tvAplicativo"
+            android:id="@+id/tvCedula"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="@string/aplicativo"
+            android:text="@string/cedula"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvFullName" />
 
         <TextView
-            android:id="@+id/tvModulo"
+            android:id="@+id/tvCargoContrato"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="@string/modulo"
+            android:text="@string/cargo_o_num_de_contrato"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvAplicativo" />
+            app:layout_constraintTop_toBottomOf="@+id/tvCedula" />
 
         <TextView
-            android:id="@+id/tvTipoDeSolicitud"
+            android:id="@+id/tvFechaSolicitud"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="@string/tipo_de_solicitud"
+            android:text="@string/fecha_de_solicitud"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvModulo" />
-
-        <TextView
-            android:id="@+id/tvObservacion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:maxWidth="260dp"
-            android:maxHeight="60dp"
-            android:text="@string/observacion"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTipoDeSolicitud" />
+            app:layout_constraintTop_toBottomOf="@id/tvCargoContrato" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:layout_width="60dp"
@@ -77,6 +66,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

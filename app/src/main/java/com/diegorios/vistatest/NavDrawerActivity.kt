@@ -42,7 +42,8 @@ class NavDrawerActivity : AppCompatActivity() {
                 R.id.nav_gallery,
                 R.id.nav_logout,
                 R.id.nav_SolicitarAplicativo,
-                R.id.nav_VerSolicitudes
+                R.id.nav_VerSolicitudes,
+                R.id.nav_PazySalvo
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

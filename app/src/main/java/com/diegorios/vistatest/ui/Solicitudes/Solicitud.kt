@@ -5,6 +5,7 @@ data class Solicitud(
     val fullName: String,
     val aplicativo: String,
     val modulo: String,
-    val tipoDeSolicitud: String
+    val tipoDeSolicitud: String,
+    val observacion: String
 )
 

@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.diegorios.vistatest"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.diegorios.vistatest"
