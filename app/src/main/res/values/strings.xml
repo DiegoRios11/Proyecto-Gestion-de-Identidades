@@ -34,9 +34,9 @@
     <string name="tipo_de_solicitud">Tipo de Solicitud</string>
     <string name="modulo">Modulo</string>
     <string name="aplicativo">Aplicativo</string>
-    <string name="Nombre_Completo">Full Name</string>
+    <string name="Nombre_Completo">Nombre Completo</string>
     <string name="id">ID</string>
-    <string name="cedula">Cedula</string>
+    <string name="cedula">Cédula</string>
     <string name="cargo_o_num_de_contrato">Cargo o n° de contrato</string>
     <string name="fecha_de_solicitud">Fecha de solicitud</string>
     <string name="observacion">Observacion</string>
