@@ -5,5 +5,12 @@ data class PazySalvo(
     val fullName: String,
     val cedula: String,
     val cargoContrato: String,
-    val fechaSolicitud: String
+    val fechaSolicitud: String,
+    var status: Status = Status.PENDIENTE
 )
+
+enum class Status {
+    PENDIENTE,
+    ACEPTADO,
+    RECHAZADO
+}

@@ -6,6 +6,13 @@ data class Solicitud(
     val aplicativo: String,
     val modulo: String,
     val tipoDeSolicitud: String,
-    val observacion: String
+    val observacion: String,
+    var status: Status = Status.PENDIENTE
 )
+
+enum class Status {
+    PENDIENTE,
+    ACEPTADO,
+    RECHAZADO
+}
 
