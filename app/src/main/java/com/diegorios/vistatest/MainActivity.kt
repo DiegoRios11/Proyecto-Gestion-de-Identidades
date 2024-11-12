@@ -13,7 +13,7 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-public class MainLogActivity : AppCompatActivity(){
+public class MainLogActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,16 +25,29 @@ public class MainLogActivity : AppCompatActivity(){
             insets
         }
 
-        val btnLogin= findViewById<AppCompatButton>(R.id.btnLogin)
+        val btnLogin = findViewById<AppCompatButton>(R.id.btnLogin)
         val etUser = findViewById<AppCompatEditText>(R.id.etUser)
-        val etPassword= findViewById<AppCompatEditText>(R.id.etPassword)
+        val etPassword = findViewById<AppCompatEditText>(R.id.etPassword)
         val btnRegister = findViewById<AppCompatButton>(R.id.btnRegister)
+        val btnForgotPassword = findViewById<AppCompatButton>(R.id.btnForgotPassword)
 
         btnLogin.setOnClickListener {
             val user = etUser.text.toString()
             val password = etPassword.text.toString()
 
-            if(user.isNotEmpty() && password.isNotEmpty()){
+            if (user.isEmpty() && password.isEmpty()) {
+                etUser.error = "El usuario es obligatorio"
+                etPassword.error = "La contraseña es obligatoria"
+                return@setOnClickListener
+            } else if (user.isEmpty()) {
+                etUser.error = "El usuario es obligatorio"
+                return@setOnClickListener
+            } else if (password.isEmpty()) {
+                etPassword.error = "La contraseña es obligatoria"
+                return@setOnClickListener
+            }
+
+            if (user.isNotEmpty() && password.isNotEmpty()) {
                 try {
                     val intent = Intent(this, NavDrawerActivity::class.java)
                     startActivity(intent)
@@ -42,15 +55,16 @@ public class MainLogActivity : AppCompatActivity(){
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
-            }else if (user.isEmpty() || password.isEmpty()){
+            } else if (user.isEmpty() || password.isEmpty()) {
                 try {
-                    Toast.makeText(this,"Usuario y/o Contraseña inválidos", Toast.LENGTH_SHORT).show()
-                }catch (e: Exception){
+                    Toast.makeText(this, "Usuario y/o Contraseña inválidos", Toast.LENGTH_SHORT)
+                        .show()
+                } catch (e: Exception) {
                     e.printStackTrace()
                 }
             }
         }
-        btnRegister.setOnClickListener{
+        btnRegister.setOnClickListener {
             try {
                 val intent1 = Intent(this, SolicitateUser::class.java)
                 startActivity(intent1)
@@ -60,15 +74,25 @@ public class MainLogActivity : AppCompatActivity(){
             }
 
         }
+        btnForgotPassword.setOnClickListener{
+            try {
+                val intent2 = Intent(this, ForgotPasswordActivity::class.java)
+                startActivity(intent2)
+                clearInputs()
+            }catch (e: Exception) {
+                e.printStackTrace()
+            }
+
+        }
 
     }
 
-fun clearInputs(){
-    val etUser = findViewById<AppCompatEditText>(R.id.etUser)
-    val etPassword= findViewById<AppCompatEditText>(R.id.etPassword)
-    etPassword.text?.clear()
-    etUser.text?.clear()
-}
+    fun clearInputs() {
+        val etUser = findViewById<AppCompatEditText>(R.id.etUser)
+        val etPassword = findViewById<AppCompatEditText>(R.id.etPassword)
+        etPassword.text?.clear()
+        etUser.text?.clear()
+    }
 
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
         if (currentFocus != null) {

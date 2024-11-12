@@ -40,4 +40,6 @@
     <string name="cargo_o_num_de_contrato">Cargo o n° de contrato</string>
     <string name="fecha_de_solicitud">Fecha de solicitud</string>
     <string name="observacion">Observacion</string>
+    <string name="forgot_password">Olvidé mi contraseña</string>
+    <string name="Recover_Password_text">Por favor, ingresa tu correo electrónico registrado para restablecer tu contraseña. Te enviaremos un correo con las instrucciones para recuperar el acceso a tu cuenta.</string>
 </resources>
