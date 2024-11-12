@@ -42,4 +42,5 @@
     <string name="observacion">Observacion</string>
     <string name="forgot_password">Olvidé mi contraseña</string>
     <string name="Recover_Password_text">Por favor, ingresa tu correo electrónico registrado para restablecer tu contraseña. Te enviaremos un correo con las instrucciones para recuperar el acceso a tu cuenta.</string>
+    <string name="enviar_correo_de_recuperacion">Enviar correo de recuperación</string>
 </resources>
