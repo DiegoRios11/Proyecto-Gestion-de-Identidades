@@ -370,6 +370,7 @@
                 android:id="@+id/lytSystemRequired"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/etDateContrato">
@@ -452,7 +453,7 @@
                     android:scrollbars="vertical"
                     android:singleLine="false"
                     android:textSize="18sp"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/etObsrvUser" />
@@ -464,7 +465,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/lytSystemRequired">
@@ -480,6 +481,7 @@
                     android:padding="10dp"
                     android:singleLine="true"
                     android:textSize="18sp"
+                    android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -496,6 +498,7 @@
                     android:padding="10dp"
                     android:singleLine="true"
                     android:textSize="18sp"
+                    android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/etAssignUser" />
@@ -514,6 +517,7 @@
                     android:scrollbars="vertical"
                     android:singleLine="false"
                     android:textSize="18sp"
+                    android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/etAssignPassword" />
@@ -524,8 +528,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/rounded_button"
+                    android:backgroundTint="#E92424"
                     android:text="Rechazar"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toStartOf="@+id/btnApprove"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/etObsrvAdmin" />
@@ -537,7 +544,9 @@
                     android:layout_marginTop="30dp"
                     android:background="@drawable/rounded_button"
                     android:text="Aprobar"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/btnDeny"
                     app:layout_constraintTop_toBottomOf="@id/etObsrvAdmin" />
@@ -549,7 +558,9 @@
                     android:layout_marginTop="30dp"
                     android:background="@drawable/rounded_button"
                     android:text="Cerrar"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/btnApprove" />

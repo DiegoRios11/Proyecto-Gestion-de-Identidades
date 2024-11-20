@@ -1,4 +1,4 @@
-package com.diegorios.vistatest
+package com.diegorios.vistatest.ui.login
 
 import android.content.Context
 import android.content.Intent
@@ -7,11 +7,13 @@ import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.VisibleForTesting
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.diegorios.vistatest.R
 
 class MainLogActivity : AppCompatActivity() {
 
@@ -35,15 +37,7 @@ class MainLogActivity : AppCompatActivity() {
             val user = etUser.text.toString()
             val password = etPassword.text.toString()
 
-            if (user.isEmpty() && password.isEmpty()) {
-                etUser.error = "El usuario es obligatorio"
-                etPassword.error = "La contraseña es obligatoria"
-                return@setOnClickListener
-            } else if (user.isEmpty()) {
-                etUser.error = "El usuario es obligatorio"
-                return@setOnClickListener
-            } else if (password.isEmpty()) {
-                etPassword.error = "La contraseña es obligatoria"
+            if (errorMessage(user, password, etUser, etPassword)) {
                 return@setOnClickListener
             }
 
@@ -74,17 +68,44 @@ class MainLogActivity : AppCompatActivity() {
             }
 
         }
-        btnForgotPassword.setOnClickListener{
+        btnForgotPassword.setOnClickListener {
             try {
                 val intent2 = Intent(this, ForgotPasswordActivity::class.java)
                 startActivity(intent2)
                 clearInputs()
-            }catch (e: Exception) {
+            } catch (e: Exception) {
                 e.printStackTrace()
             }
 
         }
 
+    }
+@VisibleForTesting
+internal fun errorMessage(
+        user: String,
+        password: String,
+        etUser: AppCompatEditText,
+        etPassword: AppCompatEditText
+    ): Boolean {
+        return when {
+            user.isEmpty() && password.isEmpty() -> {
+                etUser.error = "El usuario es obligatorio"
+                etPassword.error = "La contraseña es obligatoria"
+                true
+            }
+
+            user.isEmpty() -> {
+                etUser.error = "El usuario es obligatorio"
+                true
+            }
+
+            password.isEmpty() -> {
+                etPassword.error = "La contraseña es obligatoria"
+                true
+            }
+
+            else -> false
+        }
     }
 
     fun clearInputs() {

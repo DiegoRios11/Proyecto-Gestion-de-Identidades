@@ -1,4 +1,4 @@
-package com.diegorios.vistatest
+package com.diegorios.vistatest.ui.login
 
 import android.os.Bundle
 import android.widget.Toast
@@ -8,6 +8,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.diegorios.vistatest.R
 
 class ForgotPasswordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,21 +25,29 @@ class ForgotPasswordActivity : AppCompatActivity() {
         btnRecoverPassword.setOnClickListener {
             val Email = etEmail.text.toString()
 
-            if (Email.isNotEmpty()){
+            if (Email.isNotEmpty()) {
                 try {
-                    Toast.makeText(this, "Correo de Recuperación Enviado ", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Correo de Recuperación Enviado ", Toast.LENGTH_SHORT)
+                        .show()
                     finish()
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
-            }else{
+            } else {
                 etEmail.error = "Ingrese Correo de Recuperación"
             }
 
-
-
         }
 
+        val btnRegresar= findViewById<AppCompatButton>(R.id.btnRegresar)
+
+        btnRegresar.setOnClickListener{
+            try {
+                finish()
+            }catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
     }
 
 

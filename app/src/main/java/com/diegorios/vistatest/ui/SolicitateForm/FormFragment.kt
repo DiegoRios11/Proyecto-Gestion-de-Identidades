@@ -1,8 +1,6 @@
 package com.diegorios.vistatest.ui.SolicitateForm
 
-import android.annotation.SuppressLint
 import android.app.AlertDialog
-import androidx.fragment.app.viewModels
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -19,11 +17,9 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
-import com.diegorios.vistatest.DatePickerFragment
 import com.diegorios.vistatest.R
-import android.view.MotionEvent
-import androidx.appcompat.widget.AppCompatEditText
-import com.diegorios.vistatest.databinding.FragmentFormBinding
+import com.diegorios.vistatest.ui.database.entities.SolicitudEntity
+import com.diegorios.vistatest.ui.database.entities.Status
 
 class FormFragment : Fragment() {
     private lateinit var checkbox: CheckBox
@@ -33,6 +29,7 @@ class FormFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val viewModel = ViewModelProvider(this).get(SolicitudFragmentViewModel::class.java)
 
         val view = inflater.inflate(R.layout.fragment_form, container, false)
 
@@ -45,23 +42,6 @@ class FormFragment : Fragment() {
 
         // Inicialización de componentes
         val etDate = view.findViewById<EditText>(R.id.etDateContrato)
-        val layout1 = view.findViewById<ConstraintLayout>(R.id.lytSystemRequired)
-        etDate.setOnClickListener { showDatePickerDialog() }
-
-        val btnRemoveLyt = view.findViewById<AppCompatButton>(R.id.btnDeny)
-        btnRemoveLyt.setOnClickListener {
-            layout1.visibility = View.GONE
-        }
-
-        val btnShowLyt = view.findViewById<AppCompatButton>(R.id.btnApprove)
-        btnShowLyt.setOnClickListener {
-            layout1.visibility = View.VISIBLE
-        }
-
-        val btnClose = view.findViewById<AppCompatButton>(R.id.btnClose)
-        btnClose.setOnClickListener {
-            activity?.onBackPressed()
-        }
 
         // Inicialización de spinners y adapters
         val genero = view.findViewById<Spinner>(R.id.spSexo)
@@ -95,6 +75,40 @@ class FormFragment : Fragment() {
 
         btnEnviarSoli.setOnClickListener {
             if (checkbox.isChecked && checkbox2.isChecked) {
+                // Recoger los datos de los EditText y Spinner
+                val solicitud = SolicitudEntity(
+                    firstName = view.findViewById<EditText>(R.id.etFirstName).text.toString(),
+                    secondName = view.findViewById<EditText>(R.id.etSecondName).text.toString(),
+                    firstSurname = view.findViewById<EditText>(R.id.etFirstSurname).text.toString(),
+                    secondSurname = view.findViewById<EditText>(R.id.etSecondSurname).text.toString(),
+                    typeDoc = documento.selectedItem.toString(),
+                    numDoc = view.findViewById<EditText>(R.id.etNumDoc).text.toString(),
+                    lugarExpedicion = view.findViewById<EditText>(R.id.etLugardeExpedicion).text.toString(),
+                    sexo = genero.selectedItem.toString(),
+                    telFijo = view.findViewById<EditText>(R.id.etTelFijo).text.toString(),
+                    celular = view.findViewById<EditText>(R.id.etCelular).text.toString(),
+                    address = view.findViewById<EditText>(R.id.etAddress).text.toString(),
+                    email = view.findViewById<EditText>(R.id.etEmail).text.toString(),
+                    cargo = view.findViewById<EditText>(R.id.etCargo).text.toString(),
+                    supervisorId = view.findViewById<EditText>(R.id.etSupervisorId).text.toString(),
+                    dependencia = view.findViewById<EditText>(R.id.etDependencia).text.toString(),
+                    sede = sede.selectedItem.toString(),
+                    ubiLaboral = view.findViewById<EditText>(R.id.etUbiLaboral).text.toString(),
+                    proCard = view.findViewById<EditText>(R.id.etProCard).text.toString(),
+                    dateContrato = etDate.text.toString(),
+                    solType = view.findViewById<EditText>(R.id.etSolType).text.toString(),
+                    aplicativo = aplicativo.selectedItem.toString(),
+                    modulo = modulo.selectedItem.toString(),
+                    obsrvUser = view.findViewById<EditText>(R.id.etObsrvUser).text.toString(),
+                    assignUser = view.findViewById<EditText>(R.id.etAssignUser).text.toString(),
+                    assignPassword = view.findViewById<EditText>(R.id.etAssignPassword).text.toString(),
+                    obsrvAdmin = view.findViewById<EditText>(R.id.etObsrvAdmin).text.toString(),
+                    statusFragmentA = Status.PENDIENTE.toString(),
+                    statusFragmentB = Status.PENDIENTE.toString()
+                )
+
+                // Insertar los datos usando el ViewModel
+                viewModel.insertSolicitud(solicitud)
                 context?.let { context ->
                     Toast.makeText(context, "Solicitud Enviada", Toast.LENGTH_SHORT).show()
                     btnEnviarSoli.isEnabled = false
@@ -333,42 +347,20 @@ class FormFragment : Fragment() {
     }
 
 }
-
-
-//class FormFragment : Fragment() {
+//val layout1 = view.findViewById<ConstraintLayout>(R.id.lytSystemRequired)
+//etDate.setOnClickListener { showDatePickerDialog() }
 //
-//    private var _binding: FragmentFormBinding? = null
-//    private val binding get() = _binding!!
-//
-//
-//    private val viewModel: FormViewModel by viewModels()
-//
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View {
-//        val formViewModel =
-//            ViewModelProvider(this).get(FormViewModel::class.java)
-//
-//        _binding = FragmentFormBinding.inflate(inflater, container, false)
-//        val root: View = binding.root
-//
-//        return root
-//
-//
-//
-//    }
-//
-//    override fun onDestroyView() {
-//        super.onDestroyView()
-//        _binding = null
-//    }
+//val btnRemoveLyt = view.findViewById<AppCompatButton>(R.id.btnDeny)
+//btnRemoveLyt.setOnClickListener {
+//    layout1.visibility = View.GONE
 //}
 //
-////override fun onCreate(savedInstanceState: Bundle?) {
-////    super.onCreate(savedInstanceState)
-////
-////    // TODO: Use the ViewModel
-////}
+//val btnShowLyt = view.findViewById<AppCompatButton>(R.id.btnApprove)
+//btnShowLyt.setOnClickListener {
+//    layout1.visibility = View.VISIBLE
+//}
+//
+//val btnClose = view.findViewById<AppCompatButton>(R.id.btnClose)
+//btnClose.setOnClickListener {
+//    activity?.onBackPressed()
+//}

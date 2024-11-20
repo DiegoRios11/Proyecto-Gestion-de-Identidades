@@ -1,4 +1,4 @@
-package com.diegorios.vistatest
+package com.diegorios.vistatest.ui.SolicitateForm
 
 import android.app.DatePickerDialog
 import android.app.Dialog
@@ -7,6 +7,7 @@ import android.icu.util.Calendar
 import android.os.Bundle
 import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
+import com.diegorios.vistatest.R
 
 class DatePickerFragment(val listener:(day:Int, month:Int,year:Int)-> Unit): DialogFragment(),
     DatePickerDialog.OnDateSetListener {
@@ -17,7 +18,8 @@ class DatePickerFragment(val listener:(day:Int, month:Int,year:Int)-> Unit): Dia
         val month:Int = c.get(Calendar.MONTH)
         val year:Int = c.get(Calendar.YEAR)
 
-        val picker = DatePickerDialog(activity as Context,R.style.datePickerTheme, this, year, month, day)
+        val picker = DatePickerDialog(activity as Context,
+            R.style.datePickerTheme, this, year, month, day)
         picker.datePicker.minDate= c.timeInMillis
         return picker
     }

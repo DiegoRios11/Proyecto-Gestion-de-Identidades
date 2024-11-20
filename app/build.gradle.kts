@@ -30,6 +30,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    testOptions{
+        unitTests { isIncludeAndroidResources=true }
+    }
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -52,7 +55,14 @@ dependencies {
     implementation(libs.androidx.legacy.support.v4)
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.recyclerview)
+    implementation(libs.core.ktx)
+    implementation(libs.core)
+    implementation(libs.androidx.room.common)
+    implementation(libs.androidx.room.ktx)
     testImplementation(libs.junit)
+    testImplementation(libs.junit.jupiter)
+    testImplementation (libs.robolectric)
+    testImplementation (libs.junit.jupiter.engine)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

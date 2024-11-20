@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_bg_mb2"
-    tools:context=".SolicitateUser">
+    tools:context=".ui.login.SolicitateUser">
 
     <ScrollView
         android:layout_width="match_parent"
