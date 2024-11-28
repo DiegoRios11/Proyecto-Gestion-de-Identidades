@@ -14,6 +14,7 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.diegorios.vistatest.R
+import com.diegorios.vistatest.ui.login.register.SolicitateUser
 
 class MainLogActivity : AppCompatActivity() {
 
@@ -51,8 +52,7 @@ class MainLogActivity : AppCompatActivity() {
                 }
             } else if (user.isEmpty() || password.isEmpty()) {
                 try {
-                    Toast.makeText(this, "Usuario y/o Contraseña inválidos", Toast.LENGTH_SHORT)
-                        .show()
+                    error_login()
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
@@ -60,8 +60,8 @@ class MainLogActivity : AppCompatActivity() {
         }
         btnRegister.setOnClickListener {
             try {
-                val intent1 = Intent(this, SolicitateUser::class.java)
-                startActivity(intent1)
+                val intentSolicitateUser = Intent(this, SolicitateUser::class.java)
+                startActivity(intentSolicitateUser)
                 clearInputs()
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -70,8 +70,8 @@ class MainLogActivity : AppCompatActivity() {
         }
         btnForgotPassword.setOnClickListener {
             try {
-                val intent2 = Intent(this, ForgotPasswordActivity::class.java)
-                startActivity(intent2)
+                val intentForgotPassword = Intent(this, ForgotPasswordActivity::class.java)
+                startActivity(intentForgotPassword)
                 clearInputs()
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -80,8 +80,8 @@ class MainLogActivity : AppCompatActivity() {
         }
 
     }
-@VisibleForTesting
-internal fun errorMessage(
+    @VisibleForTesting
+    internal fun errorMessage(
         user: String,
         password: String,
         etUser: AppCompatEditText,
@@ -91,16 +91,19 @@ internal fun errorMessage(
             user.isEmpty() && password.isEmpty() -> {
                 etUser.error = "El usuario es obligatorio"
                 etPassword.error = "La contraseña es obligatoria"
+                error_login()
                 true
             }
 
             user.isEmpty() -> {
                 etUser.error = "El usuario es obligatorio"
+                error_login()
                 true
             }
 
             password.isEmpty() -> {
                 etPassword.error = "La contraseña es obligatoria"
+                error_login()
                 true
             }
 
@@ -124,5 +127,8 @@ internal fun errorMessage(
         return super.dispatchTouchEvent(ev)
     }
 
-
+    fun error_login(){
+        Toast.makeText(this, "Usuario y/o Contraseña inválidos", Toast.LENGTH_SHORT)
+            .show()
+    }
 }
