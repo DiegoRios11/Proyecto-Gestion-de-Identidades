@@ -1,6 +1,8 @@
 package com.diegorios.vistatest.ui.SolicitateForm
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,15 +18,33 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModelProvider
 import com.diegorios.vistatest.R
 import com.diegorios.vistatest.ui.database.entities.SolicitudEntity
 import com.diegorios.vistatest.ui.database.entities.Status
 
 class FormFragment : Fragment() {
+    private lateinit var etFirstName: EditText
+    private lateinit var etFirstSurname: EditText
+    private lateinit var spTypeDoc: Spinner
+    private lateinit var etNumDoc: EditText
+    private lateinit var etLugarExpedicion: EditText
+    private lateinit var etCargo: EditText
+    private lateinit var etEmail: EditText
+    private lateinit var etTelFijo: EditText
+    private lateinit var etDateContrato: EditText
+    private lateinit var etSolType: EditText
+    private lateinit var etObsrvUser: EditText
+    private lateinit var etSecondName: EditText
+    private lateinit var etSecondSurname: EditText
+    private lateinit var spSexo: Spinner
+    private lateinit var spSede: Spinner
+    private lateinit var spAplicativo: Spinner
+    private lateinit var spModulo: Spinner
     private lateinit var checkbox: CheckBox
     private lateinit var checkbox2: CheckBox
+    private lateinit var btnEnviarSoli: AppCompatButton
 
+    @SuppressLint("CutPasteId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,110 +60,60 @@ class FormFragment : Fragment() {
             insets
         }
 
-        // Inicialización de componentes
-        val etDate = view.findViewById<EditText>(R.id.etDateContrato)
-        etDate.setOnClickListener { showDatePickerDialog() }
-        // Inicialización de spinners y adapters
-        val genero = view.findViewById<Spinner>(R.id.spSexo)
-        val documento = view.findViewById<Spinner>(R.id.spTypeDoc)
-        val sede = view.findViewById<Spinner>(R.id.spSede)
-        val aplicativo = view.findViewById<Spinner>(R.id.spAplicativo)
-        val modulo = view.findViewById<Spinner>(R.id.spModulo)
+        // Referencias a los elementos obligatorios
+        etFirstName = view.findViewById(R.id.etFirstName)
+        etFirstSurname = view.findViewById(R.id.etFirstSurname)
+        spTypeDoc = view.findViewById(R.id.spTypeDoc)
+        etNumDoc = view.findViewById(R.id.etNumDoc)
+        etLugarExpedicion = view.findViewById(R.id.etLugardeExpedicion)
+        etCargo = view.findViewById(R.id.etCargo)
+        etEmail = view.findViewById(R.id.etEmail)
+        etDateContrato = view.findViewById(R.id.etDateContrato)
+        etSolType = view.findViewById(R.id.etSolType)
+        etObsrvUser = view.findViewById(R.id.etObsrvUser)
+        etDateContrato.setOnClickListener { showDatePickerDialog() }
+
+        // Referencias a los elementos opcionales
+        etTelFijo = view.findViewById(R.id.etTelFijo)
+        etSecondName = view.findViewById(R.id.etSecondName)
+        etSecondSurname = view.findViewById(R.id.etSecondSurname)
+        spSexo = view.findViewById(R.id.spSexo)
+        spSede = view.findViewById(R.id.spSede)
+        spAplicativo = view.findViewById(R.id.spAplicativo)
+        spModulo = view.findViewById(R.id.spModulo)
 
         context?.let {
-            genero.adapter = ArrayAdapter.createFromResource(
+            spSexo.adapter = ArrayAdapter.createFromResource(
                 it, R.array.Genero, R.layout.spinner_item
             )
-            documento.adapter = ArrayAdapter.createFromResource(
+            spTypeDoc.adapter = ArrayAdapter.createFromResource(
                 it, R.array.typeOfDocuments, R.layout.spinner_item
             )
-            sede.adapter = ArrayAdapter.createFromResource(
+            spSede.adapter = ArrayAdapter.createFromResource(
                 it, R.array.Sede, R.layout.spinner_item
             )
-            aplicativo.adapter = ArrayAdapter.createFromResource(
+            spAplicativo.adapter = ArrayAdapter.createFromResource(
                 it, R.array.Aplicativo, R.layout.spinner_item
             )
-            modulo.adapter = ArrayAdapter.createFromResource(
+            spModulo.adapter = ArrayAdapter.createFromResource(
                 it, R.array.Modulo, R.layout.spinner_item
             )
         }
 
         // Configuración de CheckBoxes y botón de enviar
-        val btnEnviarSoli = view.findViewById<AppCompatButton>(R.id.btnEnviarSolicitud)
+        btnEnviarSoli = view.findViewById(R.id.btnEnviarSolicitud)
         checkbox = view.findViewById(R.id.checkTermsConf)
         checkbox2 = view.findViewById(R.id.checkDataTreatment)
 
-        btnEnviarSoli.setOnClickListener {
-            if (checkbox.isChecked && checkbox2.isChecked) {
-                // Recoger los datos de los EditText y Spinner
-                val solicitud = SolicitudEntity(
-                    firstName = view.findViewById<EditText>(R.id.etFirstName).text.toString(),
-                    secondName = view.findViewById<EditText>(R.id.etSecondName).text.toString(),
-                    firstSurname = view.findViewById<EditText>(R.id.etFirstSurname).text.toString(),
-                    secondSurname = view.findViewById<EditText>(R.id.etSecondSurname).text.toString(),
-                    typeDoc = documento.selectedItem.toString(),
-                    numDoc = view.findViewById<EditText>(R.id.etNumDoc).text.toString(),
-                    lugarExpedicion = view.findViewById<EditText>(R.id.etLugardeExpedicion).text.toString(),
-                    sexo = genero.selectedItem.toString(),
-                    telFijo = view.findViewById<EditText>(R.id.etTelFijo).text.toString(),
-                    celular = view.findViewById<EditText>(R.id.etCelular).text.toString(),
-                    address = view.findViewById<EditText>(R.id.etAddress).text.toString(),
-                    email = view.findViewById<EditText>(R.id.etEmail).text.toString(),
-                    cargo = view.findViewById<EditText>(R.id.etCargo).text.toString(),
-                    supervisorId = view.findViewById<EditText>(R.id.etSupervisorId).text.toString(),
-                    dependencia = view.findViewById<EditText>(R.id.etDependencia).text.toString(),
-                    sede = sede.selectedItem.toString(),
-                    ubiLaboral = view.findViewById<EditText>(R.id.etUbiLaboral).text.toString(),
-                    proCard = view.findViewById<EditText>(R.id.etProCard).text.toString(),
-                    dateContrato = etDate.text.toString(),
-                    solType = view.findViewById<EditText>(R.id.etSolType).text.toString(),
-                    aplicativo = aplicativo.selectedItem.toString(),
-                    modulo = modulo.selectedItem.toString(),
-                    obsrvUser = view.findViewById<EditText>(R.id.etObsrvUser).text.toString(),
-                    assignUser = view.findViewById<EditText>(R.id.etAssignUser).text.toString(),
-                    assignPassword = view.findViewById<EditText>(R.id.etAssignPassword).text.toString(),
-                    obsrvAdmin = view.findViewById<EditText>(R.id.etObsrvAdmin).text.toString(),
-                    statusFragmentA = Status.PENDIENTE.toString(),
-                    statusFragmentB = Status.PENDIENTE.toString()
-                )
 
-                // Insertar los datos usando el ViewModel
-                //viewModel.insertSolicitud(solicitud)
-                context?.let { context ->
-                    Toast.makeText(context, "Solicitud Enviada", Toast.LENGTH_SHORT).show()
-                    btnEnviarSoli.isEnabled = false
-                    checkbox.isChecked = false
-                    checkbox2.isChecked = false
-                    clearInputs(view)
-                }
-            } else if (checkbox.isChecked && !checkbox2.isChecked) {
-                context?.let { context ->
-                    Toast.makeText(
-                        context,
-                        "Solicitud Rechazada, Acepte Tratamiento de Datos Personales",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    checkbox2.isChecked = false
-                }
-            } else if (!checkbox.isChecked && checkbox2.isChecked) {
-                context?.let { context ->
-                    Toast.makeText(
-                        context,
-                        "Solicitud Rechazada, Acepte Acuerdo de Confidencialidad",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    checkbox.isChecked = false
-                }
+
+        btnEnviarSoli.setOnClickListener {
+
+            if (checkbox.isChecked && checkbox2.isChecked) {
+                submitClick(view)
+                //handleValidSubmission(view)
             } else {
-                context?.let { context ->
-                    Toast.makeText(
-                        context,
-                        "Solicitud Rechazada, Acepte Acuerdos",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    checkbox.isChecked = false
-                    checkbox2.isChecked = false
-                }
+                handleInvalidSubmission()
             }
         }
 
@@ -164,7 +134,6 @@ class FormFragment : Fragment() {
         }
 
         return view
-
 
     }
 
@@ -310,7 +279,27 @@ class FormFragment : Fragment() {
     private fun onDateSelected(day: Int, month: Int, year: Int) {
         view?.findViewById<EditText>(R.id.etDateContrato)?.setText("$day / $month / $year")
     }
+    private fun submitClick(view: View) {
+        val fieldsToValidate = listOf(
+            etFirstName to "El nombre no puede estar vacío",
+            etFirstSurname to "El primer apellido no puede estar vacío",
+            spTypeDoc to "Debe seleccionar un tipo de documento",
+            etNumDoc to "El número de documento no puede estar vacío",
+            etLugarExpedicion to "Debe proporcionar el lugar de expedición",
+            etCargo to "El cargo no puede estar vacío",
+            etEmail to "El correo electrónico no puede estar vacío",
+            etDateContrato to "Debe especificar la fecha del contrato",
+            etSolType to "Debe especificar el tipo de solicitud",
+            etObsrvUser to "Debe proporcionar observaciones del usuario"
+        )
 
+        if (validateRegistrationFields(fieldsToValidate)) {
+            // Si pasa la validación, continúa con la lógica para enviar la solicitud
+            sendRequest()
+            resetCheckboxes()
+            clearInputs(view)
+        }
+    }
     private fun clearInputs(view: View) {
         val fields = listOf(
             view.findViewById<EditText>(R.id.etFirstName),
@@ -345,10 +334,100 @@ class FormFragment : Fragment() {
             }
         }
     }
+    private fun validateRegistrationFields(fields: List<Pair<View, String>>): Boolean {
+        var allValid = true
+        for ((field, errorMessage) in fields) {
+            when (field) {
+                is EditText -> {
+                    if (field.text.isNullOrEmpty()) {
+                        field.error = errorMessage
+                        allValid = false
+                    }
+                }
+
+                is Spinner -> {
+                    if (field.selectedItemPosition == 0) {
+                        // Muestra un mensaje (puedes usar un Toast o cualquier indicador visual)
+                        Toast.makeText(field.context, errorMessage, Toast.LENGTH_SHORT).show()
+                        allValid = false
+                    }
+                }
+            }
+        }
+        return allValid
+    }
+    //    private fun handleValidSubmission(view: View) {
+//        val solicitud = createSolicitudEntity(view)
+//
+//        // Insertar los datos usando el ViewModel (descomentar cuando lo uses)
+//        // viewModel.insertSolicitud(solicitud)
+//
+//        context?.let { context ->
+//            resetCheckboxes()
+//            clearInputs(view)
+//        }
+//    }
+    private fun handleInvalidSubmission() {
+        val message = when {
+            checkbox.isChecked && !checkbox2.isChecked ->
+                "Solicitud Rechazada, Acepte Tratamiento de Datos Personales"
+            !checkbox.isChecked && checkbox2.isChecked ->
+                "Solicitud Rechazada, Acepte Acuerdo de Confidencialidad"
+            else ->
+                "Solicitud Rechazada, Acepte Acuerdos"
+        }
+
+        context?.let { context ->
+            showToast(context, message)
+        }
+    }
+    private fun resetCheckboxes() {
+        checkbox.isChecked = false
+        checkbox2.isChecked = false
+    }
+    private fun showToast(context: Context, message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    }
+    private fun createSolicitudEntity(view: View): SolicitudEntity {
+        return SolicitudEntity(
+            firstName = etFirstName.text.toString(),
+            secondName = etSecondName.text.toString(),
+            firstSurname = etFirstSurname.text.toString(),
+            secondSurname = etSecondSurname.text.toString(),
+            typeDoc = spTypeDoc.selectedItem.toString(),
+            numDoc = etNumDoc.text.toString(),
+            lugarExpedicion = etLugarExpedicion.text.toString(),
+            sexo = spSexo.selectedItem.toString(),
+            telFijo = etTelFijo.text.toString(),
+            celular = view.findViewById<EditText>(R.id.etCelular).text.toString(),
+            address = view.findViewById<EditText>(R.id.etAddress).text.toString(),
+            email = view.findViewById<EditText>(R.id.etEmail).text.toString(),
+            cargo = view.findViewById<EditText>(R.id.etCargo).text.toString(),
+            supervisorId = view.findViewById<EditText>(R.id.etSupervisorId).text.toString(),
+            dependencia = view.findViewById<EditText>(R.id.etDependencia).text.toString(),
+            sede = spSede.selectedItem.toString(),
+            ubiLaboral = view.findViewById<EditText>(R.id.etUbiLaboral).text.toString(),
+            proCard = view.findViewById<EditText>(R.id.etProCard).text.toString(),
+            dateContrato = etDateContrato.text.toString(),
+            solType = view.findViewById<EditText>(R.id.etSolType).text.toString(),
+            aplicativo = spAplicativo.selectedItem.toString(),
+            modulo = spModulo.selectedItem.toString(),
+            obsrvUser = view.findViewById<EditText>(R.id.etObsrvUser).text.toString(),
+            assignUser = view.findViewById<EditText>(R.id.etAssignUser).text.toString(),
+            assignPassword = view.findViewById<EditText>(R.id.etAssignPassword).text.toString(),
+            obsrvAdmin = view.findViewById<EditText>(R.id.etObsrvAdmin).text.toString(),
+            statusFragmentA = Status.PENDIENTE.toString(),
+            statusFragmentB = Status.PENDIENTE.toString()
+        )
+    }
+    private fun sendRequest() {
+        // Aquí se implementa la lógica para enviar la solicitud a la base de datos o API
+        Toast.makeText(requireContext(), "Solicitud enviada con éxito", Toast.LENGTH_SHORT).show()
+    }
 
 }
 //val layout1 = view.findViewById<ConstraintLayout>(R.id.lytSystemRequired)
-//
+//etDate.setOnClickListener { showDatePickerDialog() }
 //
 //val btnRemoveLyt = view.findViewById<AppCompatButton>(R.id.btnDeny)
 //btnRemoveLyt.setOnClickListener {

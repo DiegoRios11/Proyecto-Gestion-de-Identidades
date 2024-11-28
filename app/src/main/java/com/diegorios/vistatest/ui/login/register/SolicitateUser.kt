@@ -20,8 +20,8 @@ import com.diegorios.vistatest.R
 class SolicitateUser : AppCompatActivity() {
     private lateinit var etFirstName: EditText
     private lateinit var etFirstSurname: EditText
-    private lateinit var etSecondName: EditText // Opcional
-    private lateinit var etSecondSurname: EditText // Opcional
+    private lateinit var etSecondName: EditText // Opcionales
+    private lateinit var etSecondSurname: EditText // Opcionales
     private lateinit var etNumDoc: EditText
     private lateinit var etEmail: EditText
     private lateinit var etCargo: EditText
@@ -80,49 +80,7 @@ class SolicitateUser : AppCompatActivity() {
             val btnSolicitate = findViewById<AppCompatButton>(R.id.btnSolicitate)
             btnSolicitate.setOnClickListener {
                 try {
-                    val fieldsToValidate = listOf(
-                        etFirstName to "El nombre no puede estar vacío",
-                        etFirstSurname to "El primer apellido no puede estar vacío",
-                        spTypeDoc to "Debe seleccionar un tipo de documento",
-                        etNumDoc to "El número de documento no puede estar vacío",
-                        etEmail to "El correo electrónico no puede estar vacío",
-                        etCargo to "El cargo no puede estar vacío",
-                        spSupervisor to "Debe seleccionar un supervisor"
-                    )
-
-                    if (validateRegistrationFields(fieldsToValidate)) {
-                        // Recolecta los valores de los campos obligatorios
-                        val firstName = etFirstName.text.toString()
-                        val firstSurname = etFirstSurname.text.toString()
-                        val documentType = spTypeDoc.selectedItem.toString()
-                        val documentNumber = etNumDoc.text.toString()
-                        val email = etEmail.text.toString()
-                        val position = etCargo.text.toString()
-                        val supervisor = spSupervisor.selectedItem.toString()
-
-                        // Recolecta los valores opcionales si están presentes
-                        val secondName = etSecondName.text.toString().takeIf { it.isNotEmpty() }
-                        val secondSurname =
-                            etSecondSurname.text.toString().takeIf { it.isNotEmpty() }
-
-                        // Crea el objeto de registro
-                        val registrationData = RegistrationRequest(
-                            firstName = firstName,
-                            firstSurname = firstSurname,
-                            secondName = secondName,
-                            secondSurname = secondSurname,
-                            documentType = documentType,
-                            documentNumber = documentNumber,
-                            email = email,
-                            position = position,
-                            supervisor = supervisor
-                        )
-
-                        // Llama a la API o guarda los datos en la base de datos
-                        submitRegistration(registrationData)
-                        finish()
-                    }
-
+                    registerClick()
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
@@ -131,6 +89,51 @@ class SolicitateUser : AppCompatActivity() {
             Log.e("ERROR", "Error setting OnClickListener", e)
         }
 
+    }
+
+    private fun registerClick() {
+        val fieldsToValidate = listOf(
+            etFirstName to "El nombre no puede estar vacío",
+            etFirstSurname to "El primer apellido no puede estar vacío",
+            spTypeDoc to "Debe seleccionar un tipo de documento",
+            etNumDoc to "El número de documento no puede estar vacío",
+            etEmail to "El correo electrónico no puede estar vacío",
+            etCargo to "El cargo no puede estar vacío",
+            spSupervisor to "Debe seleccionar un supervisor"
+        )
+
+        if (validateRegistrationFields(fieldsToValidate)) {
+            // Recolecta los valores de los campos obligatorios
+            val firstName = etFirstName.text.toString()
+            val firstSurname = etFirstSurname.text.toString()
+            val documentType = spTypeDoc.selectedItem.toString()
+            val documentNumber = etNumDoc.text.toString()
+            val email = etEmail.text.toString()
+            val position = etCargo.text.toString()
+            val supervisor = spSupervisor.selectedItem.toString()
+
+            // Recolecta los valores opcionales si están presentes
+            val secondName = etSecondName.text.toString().takeIf { it.isNotEmpty() }
+            val secondSurname =
+                etSecondSurname.text.toString().takeIf { it.isNotEmpty() }
+
+            // Crea el objeto de registro
+            val registrationData = RegistrationRequest(
+                firstName = firstName,
+                firstSurname = firstSurname,
+                secondName = secondName,
+                secondSurname = secondSurname,
+                documentType = documentType,
+                documentNumber = documentNumber,
+                email = email,
+                position = position,
+                supervisor = supervisor
+            )
+
+            // Llamar a la API o guarda los datos en la base de datos
+            submitRegistration(registrationData)
+            finish()
+        }
     }
 
     private fun validateRegistrationFields(fields: List<Pair<View, String>>): Boolean {
