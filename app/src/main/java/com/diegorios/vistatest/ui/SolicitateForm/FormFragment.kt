@@ -29,7 +29,7 @@ class FormFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val viewModel = ViewModelProvider(this).get(SolicitudFragmentViewModel::class.java)
+        //val viewModel = ViewModelProvider(this).get(SolicitudFragmentViewModel::class.java)
 
         val view = inflater.inflate(R.layout.fragment_form, container, false)
 
@@ -42,7 +42,7 @@ class FormFragment : Fragment() {
 
         // Inicialización de componentes
         val etDate = view.findViewById<EditText>(R.id.etDateContrato)
-
+        etDate.setOnClickListener { showDatePickerDialog() }
         // Inicialización de spinners y adapters
         val genero = view.findViewById<Spinner>(R.id.spSexo)
         val documento = view.findViewById<Spinner>(R.id.spTypeDoc)
@@ -108,7 +108,7 @@ class FormFragment : Fragment() {
                 )
 
                 // Insertar los datos usando el ViewModel
-                viewModel.insertSolicitud(solicitud)
+                //viewModel.insertSolicitud(solicitud)
                 context?.let { context ->
                     Toast.makeText(context, "Solicitud Enviada", Toast.LENGTH_SHORT).show()
                     btnEnviarSoli.isEnabled = false
@@ -348,7 +348,7 @@ class FormFragment : Fragment() {
 
 }
 //val layout1 = view.findViewById<ConstraintLayout>(R.id.lytSystemRequired)
-//etDate.setOnClickListener { showDatePickerDialog() }
+//
 //
 //val btnRemoveLyt = view.findViewById<AppCompatButton>(R.id.btnDeny)
 //btnRemoveLyt.setOnClickListener {
